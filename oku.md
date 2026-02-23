@@ -1,4 +1,3 @@
-# Bitdefender GravityZone Detection Test Suite
 
 ### Genel Bakış
 
