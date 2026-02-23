@@ -1,12 +1,12 @@
 # Bitdefender GravityZone Detection Test Suite
 
-## 📋 Genel Bakış
+### Genel Bakış
 
 Bu test suite, Bitdefender GravityZone'un Windows endpoint'lerde düzgün çalışıp çalışmadığını doğrulamak için geliştirilmiş **güvenli** test araçlarıdır.
 
 **ÖNEMLİ:** Bu scriptler **SADECE TEST ORTAMINDA** kullanılmalıdır. Zararsızdır ancak antivirüs tespitlerini tetiklemek için tasarlanmıştır.
 
-## 🎯 Test Edilen Koruma Katmanları
+## Test Edilen Koruma Katmanları
 
 ### 1. **İmza Tabanlı Tespit**
    - EICAR standart test dosyası
@@ -30,18 +30,8 @@ Bu test suite, Bitdefender GravityZone'un Windows endpoint'lerde düzgün çalı
    - WMI process spawn tespiti
    - Registry değişiklik koruması
 
-## 📁 Dosyalar
 
-```
-bitdefender-tests/
-├── Bitdefender-Test-Suite.ps1    # PowerShell versiyonu (en kapsamlı)
-├── bitdefender_test_suite.py     # Python versiyonu (cross-platform)
-├── Bitdefender-Test-Suite.bat    # Batch script versiyonu (basit)
-├── README.md                      # Bu dosya
-└── Test-Results-Guide.md          # Sonuçları yorumlama rehberi
-```
-
-## 🚀 Kullanım
+## Kullanım
 
 ### PowerShell Versiyonu (Önerilen)
 
@@ -50,23 +40,23 @@ bitdefender-tests/
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 # Scripti çalıştır
-.\Bitdefender-Test-Suite.ps1
+.\calc.ps1
 
 # Verbose mod ile
-.\Bitdefender-Test-Suite.ps1 -Verbose
+.\calc.ps1 -Verbose
 
 # Özel log yolu ile
-.\Bitdefender-Test-Suite.ps1 -LogPath "C:\Logs\bdtest.log"
+.\calc.ps1 -LogPath "C:\Logs\bdtest.log"
 ```
 
 ### Python Versiyonu
 
 ```bash
 # Python 3.x gerekli
-python bitdefender_test_suite.py
+python calc.py
 
 # veya Linux/Mac'te
-python3 bitdefender_test_suite.py
+python3 calc.py
 ```
 
 ### Batch Versiyonu
@@ -76,25 +66,25 @@ python3 bitdefender_test_suite.py
 Bitdefender-Test-Suite.bat
 ```
 
-## 📊 Test Sonuçlarını Anlama
+## Test Sonuçlarını Anlama
 
 ### Tespit Oranları
 
-- **%75+** = **GÜÇLÜ** ✅ - Koruma düzgün çalışıyor
-- **%50-74** = **ORTA** ⚠️ - İnceleme gerekli, bazı koruma katmanları eksik
-- **%50-** = **ZAYIF** ❌ - Acil müdahale gerekli, ciddi sorunlar var
+- **%75+** = **GÜÇLÜ** - Koruma düzgün çalışıyor
+- **%50-74** = **ORTA** - İnceleme gerekli, bazı koruma katmanları eksik
+- **%50-** = **ZAYIF** - Acil müdahale gerekli, ciddi sorunlar var
 
 ### Beklenen Sonuçlar
 
 | Test | Beklenen Davranış |
 |------|-------------------|
-| EICAR | ✅ **Mutlaka** tespit edilmeli |
-| Şüpheli PowerShell | ✅ Yüksek ihtimalle tespit edilmeli |
-| Hızlı dosya oluşturma | ⚠️ Davranışsal koruma aktifse engellemeli |
-| Mimikatz string'leri | ⚠️ String tespiti aktifse engellemeli |
-| WMI spawn | ⚠️ İleri koruma aktifse engellemeli |
+| EICAR | **Mutlaka** tespit edilmeli |
+| Şüpheli PowerShell | Yüksek ihtimalle tespit edilmeli |
+| Hızlı dosya oluşturma | Davranışsal koruma aktifse engellemeli |
+| Mimikatz string'leri | String tespiti aktifse engellemeli |
+| WMI spawn | İleri koruma aktifse engellemeli |
 
-## 🔍 GravityZone Konsolunda Kontrol
+## GravityZone Konsolunda Kontrol
 
 Test sonrasında GravityZone konsolunda şunları kontrol edin:
 
@@ -116,41 +106,41 @@ Test sonrasında GravityZone konsolunda şunları kontrol edin:
    - Behavioral detection: Recommended
    - Script control: Enabled (önerilir)
 
-## ⚙️ Önerilen Politika Ayarları
+## Önerilen Politika Ayarları
 
 Test öncesi şu ayarların aktif olduğundan emin olun:
 
 ### Antimalware Policies
 ```
-✅ On-access scanning: Enabled
-✅ On-demand scanning: Enabled
-✅ Behavioral detection: Enabled
-✅ Script control: Enabled
-✅ Process monitoring: Enabled
+On-access scanning: Enabled
+On-demand scanning: Enabled
+Behavioral detection: Enabled
+Script control: Enabled
+Process monitoring: Enabled
 ```
 
 ### Advanced Threat Control
 ```
-✅ Exploit detection: Enabled
-✅ Ransomware mitigation: Enabled
-✅ Advanced threat detection: Enabled
+Exploit detection: Enabled
+Ransomware mitigation: Enabled
+Advanced threat detection: Enabled
 ```
 
-## 🛡️ Güvenlik Notları
+## Güvenlik Notları
 
 ### Bu Testler:
-✅ **SADECE** tespit mekanizmalarını test eder
-✅ **Gerçek zarar vermez**
-✅ **EICAR gibi endüstri standartları kullanır**
-✅ **Antivirüs test için tasarlanmıştır**
+**SADECE** tespit mekanizmalarını test eder
+**Gerçek zarar vermez**
+**EICAR gibi endüstri standartları kullanır**
+**Antivirüs test için tasarlanmıştır**
 
 ### Bu Testler DEĞİLDİR:
-❌ Gerçek malware
-❌ Exploit tools
-❌ Penetration testing tools
-❌ Üretim sistemlerde kullanılacak
+Gerçek malware
+Exploit tools
+Penetration testing tools
+Üretim sistemlerde kullanılacak
 
-## 📝 Log Dosyaları
+## Log Dosyaları
 
 Her test çalışması detaylı log üretir:
 
@@ -161,8 +151,6 @@ Her test çalışması detaylı log üretir:
 - Başarı/başarısızlık durumları
 - Timestamp'ler
 - Tespit detayları
-
-## 🔧 Sorun Giderme
 
 ### "EICAR tespit edilmedi" uyarısı
 1. Real-time scanning aktif mi kontrol edin
@@ -184,33 +172,11 @@ Her test çalışması detaylı log üretir:
 2. Konsol bağlantısı sağlıklı mı?
 3. Reporting ayarları doğru mu?
 
-## 📚 Ek Kaynaklar
+## Ek Kaynaklar
 
 - [Bitdefender GravityZone Dokümantasyonu](https://www.bitdefender.com/business/support/en/77209-384347-gravityzone.html)
 - [EICAR Test Dosyası Hakkında](https://www.eicar.org/download-anti-malware-testfile/)
 - [Windows Defender ATP için benzer testler](https://demo.wd.microsoft.com/)
-
-## 🤝 Katkıda Bulunma
-
-Test geliştirmeleri için:
-1. Yeni test senaryoları ekleyin
-2. False positive'leri raporlayın
-3. Dokümantasyonu geliştirin
-
-## ⚖️ Yasal Uyarı
-
-Bu araçlar **sadece meşru güvenlik testleri** için tasarlanmıştır:
-- Kendi kurumunuzun sistemlerinde kullanın
-- Yazılı izin olmadan başka sistemlerde test yapmayın
-- Yasal düzenlemelere uyun
-- Etik hack kurallarına uyun
-
-## 📞 Destek
-
-Sorular veya sorunlar için:
-1. Bitdefender GravityZone support ekibine başvurun
-2. Log dosyalarını gönderin
-3. Test environment detaylarını paylaşın
 
 ---
 
